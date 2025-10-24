@@ -1,0 +1,40 @@
+# Square environment configuration (Robomimic)
+name: square
+dataset_class: dyn_model.datasets.robomimic_dset.RobomimicImageDynamicsModelDataset
+
+# Dataset paths
+train_data_path: null  # Set this to your square training data path
+val_data_path: null    # Set this to your square validation data path
+
+# Dataset parameters
+view_names: ['agentview_image', 'robot0_eye_in_hand_image']
+
+# Action and proprioception dimensions
+action_dim: 10  # Absolute action for square
+proprio_dim: 9  # robot0_eef_pos(3) + robot0_eef_quat(4) + robot0_gripper_qpos(2)
+
+# Image dimensions
+original_img_size: 140
+cropped_img_size: 128  # When use_crop is true
+
+# Model embeddings
+action_emb_dim: 240
+proprio_emb_dim: 16
+
+# Policy checkpoint
+policy_ckpt_path: null  # Set this to your square policy checkpoint path
+
+# Shape meta for observations
+shape_obs:
+  robot0_eef_pos:
+    shape: [3]
+  robot0_eef_quat:
+    shape: [4]
+  robot0_gripper_qpos:
+    shape: [2]
+  agentview_image:
+    shape: [3, 140, 140]
+    type: 'rgb'
+  robot0_eye_in_hand_image:
+    shape: [3, 140, 140]
+    type: 'rgb'

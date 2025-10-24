@@ -1,0 +1,3 @@
+_target_: dyn_model.models.proprio.ProprioceptiveEmbedding
+num_frames: 1
+tubelet_size: 1

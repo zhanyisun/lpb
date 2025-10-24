@@ -1,0 +1,29 @@
+# config.yaml
+hydra:
+  run:
+    dir: .
+
+dynamics_model_checkpoint: '/store/real/zhanyis/diffusion_policy/outputs/2025-04-16/17-50-00/checkpoints/model_110.pth'
+policy_checkpoint: '/store/real/zhanyis/diffusion_policy/data/outputs/2025.04.09/05.27.53_train_diffusion_unet_hybrid_square_image/checkpoints/920.ckpt'
+guidance_start_timestep: 10
+guidance_scale: 0.05
+
+threshold: 3.3
+n_test: 50
+test_start_seed: 100000
+num_samples: 8
+n_action_steps: 8
+
+output_dir: 'data/release_square_test'
+
+device: "cuda"
+
+# Environment runner configuration
+env_runner_target: 'diffusion_policy.env_runner.robomimic_image_sequential_runner.SequentialRobomimicImageRunner'
+
+# Planner configuration
+planner_target: 'dyn_model.planner.Planner'
+
+# Demo dataset path (20% for robomimic)
+demo_dataset_path: '/store/real/zhanyis/diffusion_policy/data/robomimic/datasets/square/ph/square_ph_demo_v141_image_abs_tune_cam_0.02_fov_100_size_140_20_perc.hdf5'
+

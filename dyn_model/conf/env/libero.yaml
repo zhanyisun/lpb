@@ -1,0 +1,39 @@
+# Libero environment configuration
+name: libero
+dataset_class: dyn_model.datasets.libero_dset.LiberoImageDynamicsModelDataset
+
+# Dataset paths
+train_data_path: '/store/real/zhanyis/diffusion_policy/data/libero/libero_10_clip_both_views_val.zarr.zip'  # Set this to your libero training data path
+val_data_path: '/store/real/zhanyis/diffusion_policy/data/libero/libero_10_clip_both_views_val.zarr.zip'    # Set this to your libero validation data path
+
+# Dataset parameters
+view_names: ['agentview_rgb']
+
+# Action and proprioception dimensions
+action_dim: 10  # Absolute action for libero
+proprio_dim: 14  # ee_pos(3) + ee_ori(4) + joint_states(7)
+
+# Image dimensions
+original_img_size: 128
+cropped_img_size: 114  # When use_crop is true
+
+# Model embeddings
+action_emb_dim: 240
+proprio_emb_dim: 20
+
+# Policy checkpoint
+policy_ckpt_path: '/store/real/zhanyis/diffusion_policy/data/outputs/2025.06.04/03.33.53_train_diffusion_unet_hybrid_libero_image/checkpoints/160.ckpt'  # Set this to your libero policy checkpoint path
+
+# Shape meta for observations
+shape_obs:
+  ee_ori:
+    shape: [4]
+  ee_pos:
+    shape: [3]
+  joint_states:
+    shape: [7]
+  language:
+    shape: [15]
+  agentview_rgb:
+    shape: [3, 128, 128]
+    type: 'rgb'

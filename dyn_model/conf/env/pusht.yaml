@@ -1,0 +1,25 @@
+# PushT environment configuration
+name: pusht
+dataset_class: dyn_model.datasets.pusht_dset.PushTImageDynamicsModelDataset
+
+# Dataset paths
+train_data_path: null  # Set this to your pusht training data path
+val_data_path: null    # Set this to your pusht validation data path
+
+# Dataset parameters
+view_names: ['image']
+
+# Action and proprioception dimensions
+action_dim: 2  # PushT uses 2D action space
+proprio_dim: 2  # agent_pos
+
+# Image dimensions
+original_img_size: 140
+cropped_img_size: 128  # When use_crop is true
+
+# Model embeddings
+action_emb_dim: 64
+proprio_emb_dim: 16
+
+# Policy checkpoint
+policy_ckpt_path: null  # Set this to your pusht policy checkpoint path

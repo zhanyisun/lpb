@@ -1,0 +1,57 @@
+defaults:
+  - _self_
+  - env: transport
+  - action_encoder: proprio
+  - proprio_encoder: proprio
+  - predictor: vit
+
+training:
+  seed: 0
+  epochs: 200
+  batch_size: 96 # should >= nodes * tasks_per_node
+  save_every_x_epoch: 10
+  encoder_lr: 1e-7
+  predictor_lr: 5e-4
+  action_encoder_lr: 5e-4
+
+img_size: 140 # should be a multiple of 224
+frameskip: 15
+
+# Dataset configuration - imported from env-specific configs
+train_data_path: ${env.train_data_path}
+val_data_path: ${env.val_data_path}
+view_names: ${env.view_names}
+
+# Image dimensions - imported from env-specific configs
+original_img_size: ${env.original_img_size}
+cropped_img_size: ${env.cropped_img_size}
+
+# Model embeddings - imported from env-specific configs
+action_emb_dim: ${env.action_emb_dim}
+proprio_emb_dim: ${env.proprio_emb_dim}
+
+# Policy checkpoint - imported from env-specific configs
+policy_ckpt_path: ${env.policy_ckpt_path}
+
+# General training settings
+use_layernorm: True
+use_crop: True
+abs_action: True
+normalize_action: True
+
+num_hist: 1
+num_pred: 1 # only supports 1
+has_predictor: True 
+use_pretrained_encoder: True
+encoder_ckpt_path: null
+# predictor_ckpt_path: '/store/real/zhanyis/diffusion_policy/outputs/2025-06-12/05-15-35/checkpoints/model_50.pth'
+predictor_ckpt_path: '/store/real/zhanyis/diffusion_policy/outputs/2025-04-15/07-30-10/checkpoints/model_60.pth'
+model:
+  _target_: dyn_model.models.visual_dyn_model.VisualDynamicsModel
+  image_size: ${img_size}
+  num_hist: ${num_hist}
+  num_pred: ${num_pred}
+  train_encoder: False
+  train_predictor: True
+
+debug: False 
