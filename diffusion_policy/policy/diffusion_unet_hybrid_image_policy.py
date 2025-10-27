@@ -256,8 +256,6 @@ class DiffusionUnetHybridImagePolicy(BaseImagePolicy):
                 cond_grad = -torch.autograd.grad(loss, trajectory)[0]
                 guidance_scale = self.guidance_scale
                 grad_scale = guidance_scale * (1 - scheduler.alphas_cumprod[t]).sqrt()
-                print('cond_grad norm ', cond_grad.norm().item())
-                print('grad_scale ', grad_scale)
                 trajectory = trajectory.detach() + grad_scale * cond_grad
 
             # 3. compute previous image: x_t -> x_t-1

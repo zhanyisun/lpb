@@ -3,15 +3,14 @@ hydra:
   run:
     dir: .
 
-dynamics_model_checkpoint: '/store/real/zhanyis/lpb_submission_code/model_ckpt/tool_hang/dyn_checkpoints/model_70.pth'
-policy_checkpoint: '/store/real/zhanyis/diffusion_policy/data/outputs/2025.04.02/11.08.18_train_diffusion_unet_hybrid_transport_image/checkpoints/260.ckpt'
+dynamics_model_checkpoint: 'model_ckpt/tool_hang/dyn_checkpoints/model_70.pth'
+policy_checkpoint: 'data/outputs/2025.04.02/11.08.18_train_diffusion_unet_hybrid_transport_image/checkpoints/260.ckpt'
 guidance_start_timestep: 10
 guidance_scale: 0.05
 
 threshold: 1.4
 n_test: 50
 test_start_seed: 100000
-num_samples: 8
 n_action_steps: 15
 
 output_dir: 'data/release_tool_hang_test'
@@ -25,5 +24,5 @@ env_runner_target: 'diffusion_policy.env_runner.robomimic_image_sequential_runne
 planner_target: 'dyn_model.planner.Planner'
 
 # Demo dataset path
-demo_dataset_path: '/store/real/zhanyis/diffusion_policy/data/robomimic/datasets/tool_hang/ph/tool_hang_ph_demo_v141_image_abs_tune_cam_0.08_fov_100_size_140_fix.hdf5'
+demo_dataset_path: 'data/robomimic/datasets/tool_hang/ph/tool_hang_ph_demo_v141_image_abs_tune_cam_0.08_fov_100_size_140_20_perc.hdf5'
 

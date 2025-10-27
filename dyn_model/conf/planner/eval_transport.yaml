@@ -3,15 +3,14 @@ hydra:
   run:
     dir: .
 
-dynamics_model_checkpoint: '/store/real/zhanyis/lpb_submission_code/model_ckpt/transport/dyn_checkpoints/model_60.pth'
-policy_checkpoint: '/store/real/zhanyis/diffusion_policy/data/outputs/2025.04.02/11.08.18_train_diffusion_unet_hybrid_transport_image/checkpoints/260.ckpt'
+dynamics_model_checkpoint: 'data/transport/model_ckpt/dyn_model/checkpoints/model_60.pth'
+policy_checkpoint: 'data/transport/model_ckpt/base_policy/checkpoints/270.ckpt'
 guidance_start_timestep: 10
 guidance_scale: 0.2
 
 threshold: 2.8
 n_test: 50
 test_start_seed: 100000
-num_samples: 8
 n_action_steps: 15
 
 output_dir: 'data/release_transport_test'
@@ -25,5 +24,5 @@ env_runner_target: 'diffusion_policy.env_runner.robomimic_image_sequential_runne
 planner_target: 'dyn_model.planner.Planner'
 
 # Demo dataset path
-demo_dataset_path: '/store/real/zhanyis/diffusion_policy/data/robomimic/datasets/transport/ph/transport_ph_demo_v141_image_abs_tune_cam_0.05_fov_75_size_140_fix_20_perc.hdf5'
+demo_dataset_path: 'data/transport/data/expert_demonstration/transport_ph_demo_v141_20_perc.hdf5'
 

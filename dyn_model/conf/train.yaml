@@ -5,6 +5,10 @@ defaults:
   - proprio_encoder: proprio
   - predictor: vit
 
+hydra:
+  run:
+    dir: data/outputs/${now:%Y.%m.%d}/${now:%H.%M.%S}_${env.name}
+
 training:
   seed: 0
   epochs: 200

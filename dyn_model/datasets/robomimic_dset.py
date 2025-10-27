@@ -55,8 +55,8 @@ class RobomimicImageDynamicsModelDataset(Dataset):
         rotation_transformer = RotationTransformer(
             from_rep='axis_angle', to_rep='rotation_6d')
         
-        cache_zarr_path = zarr_path + '_lossless.zarr.zip'
-        cache_lock_path = cache_zarr_path + '_lossless.lock'
+        cache_zarr_path = zarr_path + '.zarr.zip'
+        cache_lock_path = cache_zarr_path + '.lock'
         print('Acquiring lock on cache.')
         with FileLock(cache_lock_path):
             if not os.path.exists(cache_zarr_path):

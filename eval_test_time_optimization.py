@@ -40,18 +40,13 @@ def main(cfg: DictConfig):
 
     cfg_task_env_runner.task.env_runner.n_test = cfg.n_test
     cfg_task_env_runner.task.env_runner.n_test_vis = cfg.n_test
-    # cfg_task_env_runner.task.env_runner.n_action_steps = 15
     cfg_task_env_runner.task.env_runner.n_train = 0
     cfg_task_env_runner.task.env_runner.n_train_vis = 0
     cfg_task_env_runner.task.env_runner.test_start_seed = cfg.test_start_seed
-    if 'tool_hang' in cfg.policy_checkpoint:
-        cfg_task_env_runner.task.env_runner.max_steps = 780
-    elif 'pushT' in cfg.policy_checkpoint:
-        cfg_task_env_runner.task.env_runner.max_steps = 400
-        # cfg_task_env_runner.task.env_runner.max_steps = 500
-    cfg_task_env_runner.task.env_runner.n_envs = cfg_task_env_runner.task.env_runner.n_test + cfg_task_env_runner.task.env_runner.n_train
+
     if 'libero' in cfg.policy_checkpoint:
         cfg_task_env_runner.task.env_runner.dataset_path = cfg.dataset_path
+        
     # Initialize workspace
     cls = hydra.utils.get_class(cfg_task_env_runner._target_)
     workspace = cls(cfg_task_env_runner, output_dir=output_dir)
