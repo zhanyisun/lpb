@@ -16,7 +16,10 @@ or
 ```console
 $ conda env create -f conda_environment.yaml
 ```
-
+Activate conda env with
+```console
+$ conda activate lpb
+```
 ## Reproducing Simulation Results 
 ### Base Diffusion Policy Training
 
